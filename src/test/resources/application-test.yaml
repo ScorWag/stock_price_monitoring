@@ -1,0 +1,18 @@
+spring:
+  datasource:
+    url: testcontainers
+    username: testcontainers
+    password: testcontainers
+
+client:
+  name: polygon
+  base-url: http://localhost:9091
+  multiplier: 1
+  timespan: day
+
+
+
+
+
+
+

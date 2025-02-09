@@ -1,0 +1,21 @@
+databaseChangeLog:
+  - changeSet:
+      author: Nikolaev Igor
+      id: create-role-table
+      changes:
+        - createTable:
+            tableName: role
+            schemaName: stock_price_monitoring
+            columns:
+              - column:
+                  name: id
+                  type: bigint
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: role_type
+                  type: varchar(255)
+                  constraints:
+                    nullable: false

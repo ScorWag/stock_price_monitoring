@@ -1,0 +1,29 @@
+databaseChangeLog:
+  - changeSet:
+      author: Nikolaev Igor
+      id: create-role-permission-table
+      changes:
+        - createTable:
+            tableName: role_permission
+            schemaName: stock_price_monitoring
+            columns:
+              - column:
+                  name: role_id
+                  type: bigint
+                  constraints:
+                    nullable: false
+                    foreignKeyName: role_permission_role_fk
+                    referencedTableSchemaName: stock_price_monitoring
+                    referencedTableName: role
+                    referencedColumnNames: id
+                    primaryKey: true
+              - column:
+                  name: permission_id
+                  type: bigint
+                  constraints:
+                    nullable: false
+                    foreignKeyName: role_permission_permission_fk
+                    referencedTableSchemaName: stock_price_monitoring
+                    referencedTableName: permission
+                    referencedColumnNames: id
+                    primaryKey: true

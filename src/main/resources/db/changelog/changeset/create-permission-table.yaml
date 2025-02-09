@@ -1,0 +1,21 @@
+databaseChangeLog:
+  - changeSet:
+      author: Nikolaev Igor
+      id: create-permission-table
+      changes:
+        - createTable:
+            tableName: permission
+            schemaName: stock_price_monitoring
+            columns:
+              - column:
+                  name: id
+                  type: bigint
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: name
+                  type: varchar(255)
+                  constraints:
+                    nullable: false

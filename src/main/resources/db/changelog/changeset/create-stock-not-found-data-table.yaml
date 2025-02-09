@@ -1,0 +1,30 @@
+databaseChangeLog:
+  - changeSet:
+      author: Nikolaev Igor
+      id: create-stock-not-found-data-table
+      changes:
+        - createTable:
+            tableName: stock_not_found_data
+            schemaName: stock_price_monitoring
+            columns:
+              - column:
+                  name: id
+                  type: bigint
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: stock_id
+                  type: bigint
+                  constraints:
+                    nullable: false
+                    foreignKeyName: stock_not_found_data_stock_fk
+                    referencedTableSchemaName: stock_price_monitoring
+                    referencedTableName: stock
+                    referencedColumnNames: id
+              - column:
+                  name: date
+                  type: date
+                  constraints:
+                    nullable: false

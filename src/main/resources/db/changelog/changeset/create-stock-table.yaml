@@ -1,0 +1,22 @@
+databaseChangeLog:
+  - changeSet:
+      author: Nikolaev Igor
+      id: create-stock-table
+      changes:
+        - createTable:
+            tableName: stock
+            schemaName: stock_price_monitoring
+            columns:
+              - column:
+                  name: id
+                  type: bigint
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: ticker
+                  type: varchar(5)
+                  constraints:
+                    nullable: false
+                    unique: true

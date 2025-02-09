@@ -1,0 +1,7 @@
+databaseChangeLog:
+  - changeSet:
+      author: Nikolaev Igor
+      id: create-schema
+      changes:
+        - sql:
+            sql: CREATE SCHEMA IF NOT EXISTS stock_price_monitoring;

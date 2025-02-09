@@ -1,0 +1,37 @@
+databaseChangeLog:
+  - changeSet:
+      author: Nikolaev Igor
+      id: create-token-table
+      changes:
+        - createTable:
+            tableName: token
+            schemaName: stock_price_monitoring
+            columns:
+              - column:
+                  name: id
+                  type: bigint
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: user_id
+                  type: bigint
+                  constraints:
+                    nullable: false
+                    foreignKeyName: user_token_fk
+                    referencedTableSchemaName: stock_price_monitoring
+                    referencedTableName: user
+                    referencedColumnNames: id
+                    deleteCascade: true
+              - column:
+                  name: token
+                  type: varchar(255)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: token_type
+                  type: varchar(255)
+              - column:
+                  name: is_active
+                  type: boolean

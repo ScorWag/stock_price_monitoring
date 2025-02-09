@@ -1,0 +1,33 @@
+version: "3.8"
+
+services:
+  app:
+    image: stock-price-monitoring
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8080:8080"
+    depends_on:
+      - postgres
+    environment:
+      - DATASOURCE_DRIVER_CLASS_NAME=org.postgresql.Driver
+      - DATASOURCE_URL=jdbc:postgresql://postgres:5432/postgres?currentSchema=stock_price_monitoring
+      - SPRING_JPA_HIBERNATE_DDL-AUTO=validate
+      - DATASOURCE_USERNAME=${DATASOURCE_USERNAME}
+      - DATASOURCE_PASSWORD=${DATASOURCE_PASSWORD}
+      - JWT_SECRET_KEY=${JWT_SECRET_KEY}
+      - POLYGON_API_KEY=${POLYGON_API_KEY}
+  postgres:
+    image: postgres:15.10
+    environment:
+      POSTGRES_DATABASE: 'postgres'
+      POSTGRES_USERNAME: ${DATASOURCE_USERNAME}
+      POSTGRES_PASSWORD: ${DATASOURCE_PASSWORD}
+    ports:
+      - "5435:5432"
+    volumes:
+      - db:/var/lib/postgresql/data postgres
+
+volumes:
+  db:

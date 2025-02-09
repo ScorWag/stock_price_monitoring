@@ -1,0 +1,34 @@
+databaseChangeLog:
+  - changeSet:
+      author: Nikolaev Igor
+      id: create-user-stock-data-table
+      changes:
+        - createTable:
+            tableName: user_stock_data
+            schemaName: stock_price_monitoring
+            columns:
+              - column:
+                  name: user_id
+                  type: bigint
+                  constraints:
+                    nullable: false
+                    foreignKeyName: user_stock_data_user_fk
+                    referencedTableSchemaName: stock_price_monitoring
+                    referencedTableName: user
+                    referencedColumnNames: id
+                    primaryKey: true
+              - column:
+                  name: stock_data_id
+                  type: bigint
+                  constraints:
+                    nullable: false
+                    foreignKeyName: user_stock_data_stock_data_fk
+                    referencedTableSchemaName: stock_price_monitoring
+                    referencedTableName: stock_data
+                    referencedColumnNames: id
+                    primaryKey: true
+              - column:
+                  name: created
+                  type: timestamp
+                  constraints:
+                    nullable: false

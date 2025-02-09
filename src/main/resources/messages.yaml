@@ -1,0 +1,7 @@
+validation-not-blank: не может быть пустым
+validation-size: должен содержать от {min} до {max} символов
+validation-email: электронная почта должна быть в формате user@example.com
+validation-ticker: акции с тикером ${validatedValue} нет в базе.
+validation-date-format: дата должна быть в формате yyyy-mm-dd
+validation-check-date-default-message: Даты переданы в неверном формате!
+validation-check-date: Начальная дата диапазона не может быть позже конечной даты!

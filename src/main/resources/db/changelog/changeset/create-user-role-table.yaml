@@ -1,0 +1,30 @@
+databaseChangeLog:
+  - changeSet:
+      author: Nikolaev Igor
+      id: create-user-role-table
+      changes:
+        - createTable:
+            tableName: user_role
+            schemaName: stock_price_monitoring
+            columns:
+              - column:
+                  name: user_id
+                  type: bigint
+                  constraints:
+                    nullable: false
+                    foreignKeyName: user_role_user_fk
+                    referencedTableSchemaName: stock_price_monitoring
+                    referencedTableName: user
+                    referencedColumnNames: id
+                    primaryKey: true
+              - column:
+                  name: role_id
+                  type: bigint
+                  constraints:
+                    nullable: false
+                    foreignKeyName: user_role_role_fk
+                    referencedTableSchemaName: stock_price_monitoring
+                    referencedTableName: role
+                    referencedColumnNames: id
+                    primaryKey: true
+                    deleteCascade: true

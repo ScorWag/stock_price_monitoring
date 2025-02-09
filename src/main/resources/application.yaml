@@ -1,0 +1,57 @@
+spring:
+  config:
+    import: optional:file:.env[.properties]
+  application:
+    name: stock_price_monitoring
+  profiles:
+    active: local
+
+  #  Datasource
+  datasource:
+    url: ${DATASOURCE_URL:jdbc:postgresql://localhost:5435/postgres?currentSchema=stock_price_monitoring}
+    username: ${DATASOURCE_USERNAME}
+    password: ${DATASOURCE_PASSWORD}
+    driver-class-name: ${DATASOURCE_DRIVER_CLASS_NAME:org.postgresql.Driver}
+  jpa:
+    hibernate:
+      ddl-auto: ${SPRING_JPA_HIBERNATE_DDL-AUTO:validate}
+    show-sql: true
+    properties:
+      hibernate:
+        default_schema: stock_price_monitoring
+  #    open-in-view: false
+  sql:
+    init:
+      mode: never
+  #  Liquibase
+  liquibase:
+    change-log: classpath:db/changelog/changelog-master.yaml
+    enabled: true
+    default-schema: stock_price_monitoring
+
+  #  Security
+  security:
+    jwt:
+      access_token_expiration: 36000000 # 10 hours
+      refresh_token_expiration: 252000000 # 7 days
+
+  secrets:
+    jwt-secret-key: ${JWT_SECRET_KEY}
+    polygon-api-key: ${POLYGON_API_KEY}
+
+# OpenFeign
+client:
+  name: polygon
+  base-url: https://api.polygon.io/
+  multiplier: 1
+  timespan: day
+
+
+
+
+
+
+
+
+
+
