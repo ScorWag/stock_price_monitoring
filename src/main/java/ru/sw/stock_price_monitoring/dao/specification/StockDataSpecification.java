@@ -2,7 +2,6 @@ package ru.sw.stock_price_monitoring.dao.specification;
 
 import jakarta.persistence.criteria.*;
 import org.springframework.data.jpa.domain.Specification;
-import org.springframework.lang.NonNull;
 import ru.sw.stock_price_monitoring.entity.*;
 
 import java.time.LocalDate;

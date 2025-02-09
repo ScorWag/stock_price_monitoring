@@ -9,5 +9,4 @@ import java.util.List;
 
 public interface StockNotFoundDataRepository extends JpaRepository<StockNotFoundData, Long> {
     List<StockNotFoundData> findByStockAndDateIn(Stock stock, List<LocalDate> dates);
-    boolean existsByStockAndDate(Stock stock, LocalDate date);
 }

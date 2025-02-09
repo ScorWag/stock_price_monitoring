@@ -15,10 +15,6 @@ public class DateRange {
         dateRange = new TreeSet<>();
     }
 
-    public DateRange(List<LocalDate> dateRange) {
-        this.dateRange = new TreeSet<>(dateRange);
-    }
-
     public boolean addDate(LocalDate date) {
         return dateRange.add(date);
     }
